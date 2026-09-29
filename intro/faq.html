@@ -6,22 +6,21 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frequently asked questions &mdash;  v0.2.0 documentation</title>
+  <title>Frequently asked questions &mdash; Coyote v0.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=683873e3"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/documentation_options.js?v=cc40f7fa"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Static layer" href="../system/static.html" />
-    <link rel="prev" title="Quick start" href="quick-start.html" /> 
+    <link rel="next" title="Citation and publications" href="publications.html" />
+    <link rel="prev" title="V80 notes" href="v80-notes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -33,7 +32,7 @@
           
           
           <a href="../index.html" class="icon icon-home">
-            
+            Coyote
               <img src="../_static/cyt_logo_dark.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -50,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v80-notes.html">V80 notes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently asked questions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#coyote-concepts">Coyote concepts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#system-set-up-compatibility">System set-up &amp; compatibility</a></li>
@@ -58,16 +58,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">System architecture</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../system/static.html">Static layer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system/dynamic.html">Dynamic layer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system/application.html">Application layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Citation and publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release notes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developer guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/sw.html">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/driver.html">Device driver</a></li>
 </ul>
 
         </div>
@@ -76,7 +77,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html"></a>
+          <a href="../index.html">Coyote</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -116,8 +117,8 @@ For example, one could have a set-up where two vFPGAs are used for e.g., encrypt
 
 <span class="nb">validation_checks_hw</span><span class="p">()</span>
 <span class="nb">load_apps</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">VFPGA_C0_0</span><span class="w"> </span><span class="s2">&quot;apps/encryption&quot;</span>
-<span class="w">    </span><span class="s">VFPGA_C0_1</span><span class="w"> </span><span class="s2">&quot;apps/compression&quot;</span>
+<span class="w">    </span><span class="s">VFPGA_C0_0</span><span class="w"> </span><span class="s2">"apps/encryption"</span>
+<span class="w">    </span><span class="s">VFPGA_C0_1</span><span class="w"> </span><span class="s2">"apps/compression"</span>
 <span class="p">)</span>
 
 <span class="nb">create_hw</span><span class="p">()</span>
@@ -134,8 +135,9 @@ Importantly, the two shells are completely different: the first one has no netwo
 Shell reconfiguration can be done at any time from the software, provided the two shells were linked against the same static layer.
 In most cases, this is true, as users seldom resynthesize Coyote’s static layer.
 For more details on the nuances of shell reconfiguration, see <em>Example 5: Shell reconfiguration</em>.</p>
-<figure class="align-default">
-<img alt="../_images/shell_reconfigure.png" src="../_images/shell_reconfigure.png" />
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/shell_reconfigure.png"><img alt="../_images/shell_reconfigure.png" height="273" src="../_images/shell_reconfigure.png" width="595" />
+</a>
 </figure>
 <p>On the other hand, partial reconfiguration (PR) refers to the reconfiguration of user applications (vFPGAs). The services (networking stacks, memory controllers, TLBs) and the number of vFPGAs stays the same. Below, we consider an example of partial reconfiguration with two configurations, each with two vFPGAs:</p>
 <div class="highlight-CMake notranslate"><div class="highlight"><pre><span></span><span class="c"># Shell parameters</span>
@@ -150,18 +152,18 @@ For more details on the nuances of shell reconfiguration, see <em>Example 5: She
 <span class="nb">set</span><span class="p">(</span><span class="s">N_CONFIG</span><span class="w"> </span><span class="s">2</span><span class="p">)</span>
 
 <span class="c"># Manual floorplanning for PR</span>
-<span class="nb">set</span><span class="p">(</span><span class="s">FPLAN_PATH</span><span class="w"> </span><span class="s2">&quot;${CMAKE_SOURCE_DIR}/floorplans/streaming_fplan_u55c.xdc&quot;</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">FPLAN_PATH</span><span class="w"> </span><span class="s2">"${CMAKE_SOURCE_DIR}/floorplans/streaming_fplan_u55c.xdc"</span><span class="p">)</span>
 
 <span class="nb">validation_checks_hw</span><span class="p">()</span>
 
 <span class="nb">load_apps</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="c"># First configuration, of 2 vFPGAs</span>
-<span class="w">    </span><span class="s">VFPGA_C0_0</span><span class="w"> </span><span class="s2">&quot;apps/encryption&quot;</span>
-<span class="w">    </span><span class="s">VFPGA_C0_1</span><span class="w"> </span><span class="s2">&quot;apps/vector_add&quot;</span>
+<span class="w">    </span><span class="s">VFPGA_C0_0</span><span class="w"> </span><span class="s2">"apps/encryption"</span>
+<span class="w">    </span><span class="s">VFPGA_C0_1</span><span class="w"> </span><span class="s2">"apps/vector_add"</span>
 
 <span class="w">    </span><span class="c"># Second configuration, of 2 vFPGAs</span>
-<span class="w">    </span><span class="s">VFPGA_C0_0</span><span class="w"> </span><span class="s2">&quot;apps/compression&quot;</span>
-<span class="w">    </span><span class="s">VFPGA_C0_1</span><span class="w"> </span><span class="s2">&quot;apps/vector_multiply&quot;</span>
+<span class="w">    </span><span class="s">VFPGA_C0_0</span><span class="w"> </span><span class="s2">"apps/compression"</span>
+<span class="w">    </span><span class="s">VFPGA_C0_1</span><span class="w"> </span><span class="s2">"apps/vector_multiply"</span>
 <span class="p">)</span>
 
 <span class="nb">create_hw</span><span class="p">()</span>
@@ -185,7 +187,7 @@ Therefore, when using Coyote with PR, you should ensure your floorplan can accom
 <span class="nb">validation_checks_hw</span><span class="p">()</span>
 
 <span class="nb">load_apps</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">VFPGA_C0_0</span><span class="w"> </span><span class="s2">&quot;apps/encryption&quot;</span>
+<span class="w">    </span><span class="s">VFPGA_C0_0</span><span class="w"> </span><span class="s2">"apps/encryption"</span>
 <span class="p">)</span>
 
 <span class="nb">create_hw</span><span class="p">()</span>
@@ -215,7 +217,7 @@ Therefore, when using Coyote with PR, you should ensure your floorplan can accom
 <div><ul class="simple">
 <li><p>For the basic Coyote functionality, a Linux kernel with version &gt;= 5 is sufficient. We have extensively tested Coyote with Linux 5.4, Linux 5.15, Linux 6.2 and Linux 6.8.</p></li>
 <li><p>For GPU peer-to-peer (P2P), a Linux version &gt;= 6.2 is required.</p></li>
-<li><p>Hugepages should be enabled in the system.</p></li>
+<li><p>Hugepages enabled.</p></li>
 <li><p>For compiling the Coyote software stack, CMake &gt;= 3.5 with support for C++17 is required.</p></li>
 </ul>
 </div></blockquote>
@@ -223,20 +225,28 @@ Therefore, when using Coyote with PR, you should ensure your floorplan can accom
 <li><p>FPGAs &amp; Vivado:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>The main target platform for the current Coyote release is the AMD Alveo U55C accelerator card. Some support and testing exists for the older U250 and U280 platforms.</p></li>
-<li><p>Coyote has to be built with Vivado design suite, including Vitis HLS. Coyote supports Vivado/Vitis HLS &gt;= 2022.1. We have conducted extensive testing with Vivado 2022.1 and recommend this version for synthesizing Coyote (but others should work as well).</p></li>
+<li><p>Coyote currently supports the AMD Alveo U55C, V80, U280 and U250.</p></li>
+<li><p>Coyote has to be built with Vivado design suite, including Vitis HLS. Coyote supports Vivado/Vitis HLS &gt;= 2022.1. Note, on the V80, we recommend using Vivado 2024.2 or newer.</p></li>
 <li><p>All network-related Coyote configurations are built using the UltraScale+ Integrated 100G Ethernet Subsystem, for which a valid license must be obtained.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>GPUs: Coyote currently supports AMD Instinct Accelerator cards, which require the ROCm driver with a version newer than 6.0.</p></li>
+<li><p>GPUs: When targeting GPU-FPGA P2P DMA (Example 6), Coyote supports AMD Instinct GPUs via ROCm &gt;= 6.0 and NVIDIA GPUs via CUDA &gt;= 12.2 with the open-source driver (required for DMA-Buf export support). Both require Linux &gt;= 6.2.</p></li>
 </ul>
-<p><strong>Does Coyote work with Intel FPGAs?</strong></p>
+<p><strong>Does Coyote work on the AMD Alveo V80?</strong></p>
+<p>Yes! In additon to supporting AMD UltraScale+ platforms (U55C, U280, U250), Coyote also supports AMD’s latest Alveo V80 card, which is based on the AMD Versal architecture.
+Nearly all of Coyote’s features, including streaming host-device data movement, HBM, memory virtualization, interrupts, multi-tenancy and reconfiguration are supported on the V80.
+Networking support, with RDMA and TCP/IP, will be added in the near future.</p>
+<p>On the V80, Coyote supports both PCIe Gen 5x8 and PCIe Gen4x16, leading to 20 - 23 GBps host - FPGA throughput. Regarding HBM performance, Coyote implements a new partitioned HBM implementation on the V80, leading to 300+ GBps throughput with memory virtualization (though more can be achieved by tuning clock frequency etc.)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More details on the V80, as well as performance tips and common gotchas can be found on the page <a class="reference internal" href="v80-notes.html#v80-notes"><span class="std std-ref">V80 notes</span></a>.</p>
+</div>
+<p><strong>Does Coyote work on Intel FPGAs?</strong></p>
 <p>No. While large amounts of Coyote’s hardware stack are written in Verilog and as such are vendor-agnostic, some modules are specific to AMD Alveo cards due to the underlying hardware.
 These include the static layer for host interaction, networking stacks and reconfiguration module. Therefore, as of now, there is no support for Intel FPGAs.</p>
 <p><strong>Does Coyote work with NVIDIA GPUs?</strong></p>
-<p>At this time, Coyote has no support for P2P with NVIDIA GPUs. However, a <a class="reference external" href="https://www.usenix.org/conference/atc22/presentation/wang-zeke">similar project</a> has been realized in the past in our research group, making it very realistic that this feature will one day be part of Coyote.
-Additionally, we are always happy to see community contributions to Coyote, including such a compatibility (see also “How can I contribute to Coyote?”).</p>
+<p>Yes! We recently added support for FPGA-GPU P2P data movement with NVIDIA GPUs via CUDA. The same DMA-Buf mechanism used for AMD GPUs is used for NVIDIA GPUs, and the Coyote software API is identical — only the build flag differs (<code class="docutils literal notranslate"><span class="pre">-DEN_CUDA=1</span></code> instead of <code class="docutils literal notranslate"><span class="pre">-DEN_ROCM=1</span></code>). NVIDIA GPU support requires CUDA &gt;= 12.2 and the open-source NVIDIA kernel driver. See <em>Example 6: FPGA-GPU Peer-to-Peer Data Movement</em> for details.</p>
 </section>
 <section id="common-pitfalls">
 <h2>Common pitfalls<a class="headerlink" href="#common-pitfalls" title="Link to this heading"></a></h2>
@@ -269,12 +279,16 @@ For such large transfers, the performance overhead of this partitioning is negli
 </div>
 <p>An example of deploying HLS kernels in Coyote can be seen in <em>Example 2: HLS Vector Addition</em>.</p>
 <p><strong>Help, my software for GPU P2P is failing to compile!</strong></p>
-<p>When compiling the Coyote software with GPU P2P it’s important to use the correct compiler. Under the hood, Coyote uses AMD’s standard GPU libraries and run-time, included in the ROCm software stack.
-However, when compiling code using the ROCm software stack, it’s important to set the compiler to hipcc, which can be achieved using:</p>
+<p>Make sure you are passing the correct GPU backend flag to CMake: <code class="docutils literal notranslate"><span class="pre">-DEN_ROCM=1</span></code> for AMD GPUs or <code class="docutils literal notranslate"><span class="pre">-DEN_CUDA=1</span></code> for NVIDIA GPUs. Only one may be set at a time.</p>
+<p>For AMD/ROCm, code must be compiled with <code class="docutils literal notranslate"><span class="pre">hipcc</span></code>. Set the compiler before invoking CMake:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">CXX</span><span class="o">=</span>hipcc
+cmake<span class="w"> </span>../<span class="w"> </span>-DEN_ROCM<span class="o">=</span><span class="m">1</span>
 </pre></div>
 </div>
-<p>Additionally, the Coyote software must be compiled with GPU support; to do so make sure you are passing <code class="docutils literal notranslate"><span class="pre">-DEN_GPU=1</span></code> when running cmake.</p>
+<p>For NVIDIA/CUDA, the standard C++ compiler is used together with the CUDA Toolkit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../<span class="w"> </span>-DEN_CUDA<span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
 <p><strong>Help, shell reconfiguration doesn’t complete and the system is stuck!</strong></p>
 <p>Chances are, the current and new shell were not linked against the same static layer netlist.
 As explained before, Coyote consists of a static layer and a shell layer, which are linked together before the final Place-and-Route.
@@ -284,6 +298,18 @@ This can cause issues in shell reconfiguration as there is no guarantee that the
 Therefore, if both the shells where built using the <em>shell</em> build flow, they can be reconfigured at run-time.
 But, if we tried to program the FPGA with the bitstream from <em>Example 1: Static HW Design &amp; Data Movement Initiated by the CPU</em> (built using <em>static</em> flow, routing the static layer from scratch) and then reconfigure with the shell from <em>Example 2: HLS Vector Addition</em> (built using <em>shell</em> flow and linked using the pre-provided design checkpoint), it would not work.</p>
 <p>If you tried reconfiguring and your system is stuck, a full system reboot is often required. At the very least, terminating the program, re-programming the FPGA and re-inserting the driver are a must.</p>
+<p><strong>Help, socket can’t bind during RDMA set-up</strong>
+If you get the following error:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>terminate<span class="w"> </span>called<span class="w"> </span>after<span class="w"> </span>throwing<span class="w"> </span>an<span class="w"> </span>instance<span class="w"> </span>of<span class="w"> </span><span class="s1">'std::runtime_error'</span>
+<span class="w">    </span>what<span class="o">()</span>:<span class="w">  </span>ERROR:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span><span class="nb">bind</span><span class="w"> </span>a<span class="w"> </span>socket
+Aborted
+</pre></div>
+</div>
+<p>It means that the socket for out-of-band QP exchange has not been cleaned up by the OS.
+When a socket is released, it typically enters a TIME_WAIT state in which it can still process some connections before being fully released by the OS.
+There are many ways around this, the simplest of which is to simply wait (sockets are typically fully released within a minute).
+Alternatively, one can try passing a different port to the initRDMA(…) function.
+Advanced users may choose to modify the function by setting socket properties to reuse sockets that are in TIME_WAIT state.</p>
 </section>
 <section id="debugging-tips">
 <h2>Debugging tips<a class="headerlink" href="#debugging-tips" title="Link to this heading"></a></h2>
@@ -302,7 +328,7 @@ But, if we tried to program the FPGA with the bitstream from <em>Example 1: Stat
 <li><p><code class="docutils literal notranslate"><span class="pre">cyt_attr_ip</span></code>: Provides the IP address of the Coyote network stack.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cyt_attr_mac</span></code>: Provides the MAC address of the FPGA where Coyote is running on.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cyt_attr_nstats</span></code>: Provides a full overview of the current network statistics, including sent and received packets, dopped packets and retransmissions for both TCP and RDMA. A major sign for failure is the <em>STRM down</em> entry, that, if set, indicates a serious failure of the entire networking stack.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cyt_attr_xstats</span></code>: Provides information on Coyote memory and command transactions between host and the card (via XDMA).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cyt_attr_hstats</span></code>: Provides information on host DMA requests: host &lt;-&gt; vFPGA, host &lt;-&gt; FPGA memory (HBM/DDR).</p></li>
 </ul>
 <p><strong>I have a hardware bug; how should I debug it?</strong></p>
 <p><em>Integrated Logic Analyzers</em> (ILAs), also referred to as <em>ChipScopes</em>, are a built-in utility that Vivado provides for FPGA debugging. Generally, these IP cores can be placed anywhere in a digital design and connected to signals of interest for debugging.
@@ -416,14 +442,14 @@ Make sure to include as much information as possible (i.e. your system setup, co
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="quick-start.html" class="btn btn-neutral float-left" title="Quick start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../system/static.html" class="btn btn-neutral float-right" title="Static layer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="v80-notes.html" class="btn btn-neutral float-left" title="V80 notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="publications.html" class="btn btn-neutral float-right" title="Citation and publications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Systems Group, ETH Zurich (2025).</p>
+    <p>&#169; Copyright 2025, System Group, ETH Zurich.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
